@@ -28,8 +28,10 @@ function App() {
       {loading && !error && <Loader />}
       {contacts.length && !error && <SearchBox />}
       {contacts.length && !error && <ContactList />}
-      {contacts.length === 0 && !error && <div>There is no contacts</div>}
-      {error && <div>{error}</div>}
+      {!contacts.length && !error && !loading && (
+        <div>There is no contacts</div>
+      )}
+      {error && !loading && <div>{error}</div>}
     </div>
   );
 }

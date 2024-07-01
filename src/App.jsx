@@ -26,8 +26,8 @@ function App() {
       <h1>Phonebook</h1>
       <ContactForm />
       {loading && !error && <Loader />}
-      {contacts.length && !error && <SearchBox />}
-      {contacts.length && !error && <ContactList />}
+      {contacts.length > 0 && !error && <SearchBox />}
+      {contacts.length > 0 && !error && <ContactList />}
       {!contacts.length && !error && !loading && (
         <div>There is no contacts</div>
       )}

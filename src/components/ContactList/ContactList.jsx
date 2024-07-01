@@ -1,15 +1,9 @@
 import { Contact } from "components";
 import { useSelector } from "react-redux";
-import {
-  selectContacts,
-  selectFilteredContacts,
-} from "../../redux/contactsSlice";
-import { selectFilter } from "../../redux/filtersSlice";
+import { selectFilteredContacts } from "../../redux/contactsSlice";
 import s from "./ContactList.module.css";
 
 export const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
   const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
@@ -21,11 +15,7 @@ export const ContactList = () => {
           </li>
         ))}
       </ul>
-      {contacts.length !== 0 && filteredContacts.length === 0 && (
-        <div>
-          Not find contact with <span className={s.empty}>{filter}</span>
-        </div>
-      )}
+      {!filteredContacts.length && <div>Contact not found</div>}
     </>
   );
 };
